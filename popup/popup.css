@@ -1,0 +1,815 @@
+/* designed by alfathaannn.id */
+
+/* ====================================================
+   FONTS: GOOGLE SANS (LOCAL FROM /fonts DIRECTORY)
+   ==================================================== */
+/* designed by alfathaannn.id */
+@font-face {
+  font-family: 'Google Sans';
+  src: url('../fonts/GoogleSans-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* designed by alfathaannn.id */
+@font-face {
+  font-family: 'Google Sans';
+  src: url('../fonts/GoogleSans-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* designed by alfathaannn.id */
+@font-face {
+  font-family: 'Google Sans';
+  src: url('../fonts/GoogleSans-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+/* designed by alfathaannn.id */
+@font-face {
+  font-family: 'Google Sans';
+  src: url('../fonts/GoogleSans-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* ====================================================
+   NEUMORPHISM THEME - POS & KIOSK DISPLAY MANAGER
+   ==================================================== */
+
+/* designed by alfathaannn.id */
+:root {
+  --bg-color: #e6edf5;
+  --bg-card: #e6edf5;
+  --shadow-light: #ffffff;
+  --shadow-dark: #c3cbd7;
+  --shadow-darker: #b4becd;
+
+  --text-main: #2d3748;
+  --text-muted: #718096;
+  --text-light: #a0aec0;
+
+  --accent-blue: #3b82f6;
+  --accent-blue-hover: #2563eb;
+  --accent-green: #10b981;
+  --accent-red: #ef4444;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-2xl: 24px; /* Sisi rounded-2xl */
+  --radius-full: 9999px;
+
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* designed by alfathaannn.id */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Google Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+html {
+  background-color: var(--bg-color);
+}
+
+/* designed by alfathaannn.id */
+/* Sisi Popup Rounded 2XL */
+body {
+  width: 420px;
+  min-height: 520px;
+  max-height: 620px;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  border-radius: var(--radius-2xl); /* Rounded-2xl */
+  overflow-x: hidden;
+  overflow-y: auto;
+  user-select: none;
+}
+
+/* Custom Scrollbar */
+body::-webkit-scrollbar {
+  width: 6px;
+}
+body::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+body::-webkit-scrollbar-thumb {
+  background: var(--shadow-dark);
+  border-radius: var(--radius-full);
+}
+
+/* designed by alfathaannn.id */
+.app-container {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border-radius: var(--radius-2xl);
+}
+
+/* designed by alfathaannn.id */
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 4px 2px;
+}
+
+.logo-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background: var(--bg-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-blue);
+  box-shadow: 4px 4px 10px var(--shadow-dark), -4px -4px 10px var(--shadow-light);
+}
+
+/* Hugeicons Sizing */
+.hugeicon {
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+.icon-monitor {
+  width: 24px;
+  height: 24px;
+}
+
+.title-hugeicon {
+  width: 17px;
+  height: 17px;
+  color: var(--accent-blue);
+}
+
+.header-text {
+  flex: 1;
+}
+
+.header-text h1 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: -0.3px;
+}
+
+.subtitle {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-top: 1px;
+}
+
+.display-counter-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  background: var(--bg-color);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  box-shadow: inset 2px 2px 5px var(--shadow-dark), inset -2px -2px 5px var(--shadow-light);
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--accent-green);
+  box-shadow: 0 0 6px rgba(16, 185, 129, 0.6);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+/* designed by alfathaannn.id */
+/* Neumorphic Cards (Rounded 2XL) */
+.neumorphic-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-2xl); /* Rounded-2xl */
+  padding: 16px;
+  box-shadow: 6px 6px 14px var(--shadow-dark), -6px -6px 14px var(--shadow-light);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.section-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* designed by alfathaannn.id */
+/* Form Groups */
+.form-group {
+  margin-bottom: 12px;
+}
+
+.dropdown-group {
+  position: relative;
+  z-index: 60;
+}
+
+.form-group label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+/* designed by alfathaannn.id */
+/* Neumorphic Input */
+.neumorphic-input {
+  width: 100%;
+  padding: 10px 14px;
+  background: var(--bg-color);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius-md);
+  color: var(--text-main);
+  font-size: 12px;
+  font-weight: 500;
+  outline: none;
+  box-shadow: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light);
+  transition: all var(--transition-fast);
+}
+
+.neumorphic-input:focus {
+  box-shadow: inset 4px 4px 7px var(--shadow-darker), inset -4px -4px 7px var(--shadow-light);
+  border-color: rgba(59, 130, 246, 0.4);
+}
+
+.neumorphic-input::placeholder {
+  color: var(--text-light);
+  font-weight: 400;
+}
+
+.hint-text {
+  display: block;
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--text-muted);
+  margin-top: 4px;
+  padding-left: 2px;
+}
+
+/* designed by alfathaannn.id */
+/* ====================================================
+   CUSTOM DROPDOWN (NEUMORPHIC THEME)
+   ==================================================== */
+.custom-select-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.custom-select-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 10px 14px;
+  text-align: left;
+  user-select: none;
+}
+
+.custom-select-trigger:focus,
+.custom-select-trigger.is-open {
+  border-color: rgba(59, 130, 246, 0.5);
+  box-shadow: inset 4px 4px 7px var(--shadow-darker), inset -4px -4px 7px var(--shadow-light);
+}
+
+.trigger-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  flex: 1;
+}
+
+.trigger-monitor-icon {
+  width: 17px;
+  height: 17px;
+  color: var(--accent-blue);
+  flex-shrink: 0;
+}
+
+.text-truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.custom-select-arrow {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  transition: transform var(--transition-fast);
+  flex-shrink: 0;
+  margin-left: 8px;
+}
+
+.custom-select-arrow .hugeicon {
+  width: 15px;
+  height: 15px;
+}
+
+.custom-select-trigger.is-open .custom-select-arrow {
+  transform: rotate(180deg);
+  color: var(--accent-blue);
+}
+
+/* designed by alfathaannn.id */
+/* Custom Dropdown Options Menu */
+.custom-select-options {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: 6px 6px 18px var(--shadow-darker), -6px -6px 18px var(--shadow-light);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  max-height: 220px;
+  overflow-y: auto;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  pointer-events: none;
+  transition: all var(--transition-fast);
+}
+
+.custom-select-options.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.custom-select-options::-webkit-scrollbar {
+  width: 5px;
+}
+.custom-select-options::-webkit-scrollbar-thumb {
+  background: var(--shadow-dark);
+  border-radius: var(--radius-full);
+}
+
+/* designed by alfathaannn.id */
+/* Custom Option Item */
+.custom-option {
+  padding: 9px 12px;
+  border-radius: var(--radius-md);
+  background: var(--bg-color);
+  box-shadow: 2px 2px 5px var(--shadow-dark), -2px -2px 5px var(--shadow-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  border: 1px solid transparent;
+}
+
+.custom-option:hover {
+  background: rgba(59, 130, 246, 0.06);
+  box-shadow: inset 2px 2px 5px var(--shadow-dark), inset -2px -2px 5px var(--shadow-light);
+}
+
+.custom-option.is-selected {
+  background: rgba(59, 130, 246, 0.12);
+  border-color: rgba(59, 130, 246, 0.4);
+  box-shadow: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light);
+}
+
+.option-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  flex: 1;
+}
+
+.option-icon-wrap {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--bg-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-blue);
+  box-shadow: inset 1px 1px 3px var(--shadow-dark), inset -1px -1px 3px var(--shadow-light);
+  flex-shrink: 0;
+}
+
+.option-icon-wrap .hugeicon {
+  width: 15px;
+  height: 15px;
+}
+
+.option-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.option-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-main);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.option-res {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.option-badges {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.option-check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-blue);
+}
+
+.option-check .hugeicon {
+  width: 16px;
+  height: 16px;
+}
+
+/* designed by alfathaannn.id */
+/* Options Toggles */
+.options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 14px 0;
+}
+
+.option-item {
+  display: flex;
+  align-items: center;
+}
+
+.toggle-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.toggle-container input {
+  display: none;
+}
+
+.neumorphic-toggle {
+  width: 36px;
+  height: 20px;
+  border-radius: var(--radius-full);
+  background: var(--bg-color);
+  box-shadow: inset 2px 2px 5px var(--shadow-dark), inset -2px -2px 5px var(--shadow-light);
+  position: relative;
+  transition: background var(--transition-fast);
+}
+
+.neumorphic-toggle::after {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--text-light);
+  box-shadow: 2px 2px 4px var(--shadow-dark);
+  transition: all var(--transition-fast);
+}
+
+.toggle-container input:checked + .neumorphic-toggle {
+  background: rgba(59, 130, 246, 0.15);
+}
+
+.toggle-container input:checked + .neumorphic-toggle::after {
+  transform: translateX(16px);
+  background: var(--accent-blue);
+  box-shadow: 0 0 6px rgba(59, 130, 246, 0.6);
+}
+
+.toggle-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+/* designed by alfathaannn.id */
+/* Buttons */
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  background: var(--bg-color);
+  transition: all var(--transition-fast);
+}
+
+.btn-icon {
+  width: 15px;
+  height: 15px;
+}
+
+.btn-primary {
+  color: var(--accent-blue);
+  box-shadow: 4px 4px 10px var(--shadow-dark), -4px -4px 10px var(--shadow-light);
+}
+
+.btn-primary:hover {
+  color: var(--accent-blue-hover);
+  box-shadow: 2px 2px 6px var(--shadow-dark), -2px -2px 6px var(--shadow-light);
+}
+
+.btn-primary:active {
+  box-shadow: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light);
+}
+
+.btn-secondary {
+  color: var(--text-muted);
+  box-shadow: 4px 4px 10px var(--shadow-dark), -4px -4px 10px var(--shadow-light);
+}
+
+.btn-secondary:hover {
+  color: var(--text-main);
+  box-shadow: 2px 2px 6px var(--shadow-dark), -2px -2px 6px var(--shadow-light);
+}
+
+.btn-secondary:active {
+  box-shadow: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light);
+}
+
+/* designed by alfathaannn.id */
+/* Status Message Toast */
+.status-message {
+  margin-top: 12px;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 11px;
+  font-weight: 500;
+  text-align: center;
+  box-shadow: inset 2px 2px 4px var(--shadow-dark), inset -2px -2px 4px var(--shadow-light);
+}
+
+.status-message.success {
+  color: #065f46;
+  background: rgba(16, 185, 129, 0.12);
+}
+
+.status-message.error {
+  color: #991b1b;
+  background: rgba(239, 68, 68, 0.12);
+}
+
+.status-message.hidden {
+  display: none;
+}
+
+/* designed by alfathaannn.id */
+/* Rules Section */
+.rules-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.rules-header .section-title {
+  margin-bottom: 0;
+}
+
+.btn-icon-only {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--bg-color);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 3px 3px 6px var(--shadow-dark), -3px -3px 6px var(--shadow-light);
+  transition: all var(--transition-fast);
+  color: var(--text-muted);
+}
+
+.btn-icon-only:hover {
+  color: var(--accent-blue);
+}
+
+.btn-icon-only:active {
+  box-shadow: inset 2px 2px 4px var(--shadow-dark), inset -2px -2px 4px var(--shadow-light);
+}
+
+.icon-refresh {
+  width: 15px;
+  height: 15px;
+}
+
+.rules-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 180px;
+  overflow-y: auto;
+  padding: 4px;
+}
+
+.rules-list::-webkit-scrollbar {
+  width: 4px;
+}
+.rules-list::-webkit-scrollbar-thumb {
+  background: var(--shadow-dark);
+  border-radius: 10px;
+}
+
+/* designed by alfathaannn.id */
+/* Rule Item Card */
+.rule-card {
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  background: var(--bg-color);
+  box-shadow: inset 2px 2px 5px var(--shadow-dark), inset -2px -2px 5px var(--shadow-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.rule-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.rule-url {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-main);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 4px;
+}
+
+.rule-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: var(--radius-full);
+  background: var(--bg-color);
+  box-shadow: 1px 1px 3px var(--shadow-dark), -1px -1px 3px var(--shadow-light);
+  color: var(--text-muted);
+}
+
+.badge-hugeicon {
+  width: 12px;
+  height: 12px;
+}
+
+.badge-primary {
+  color: var(--accent-blue);
+}
+
+.badge-fullscreen {
+  color: #059669;
+}
+
+/* designed by alfathaannn.id */
+.rule-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.btn-rule-test,
+.btn-rule-delete {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  border: none;
+  background: var(--bg-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px var(--shadow-dark), -2px -2px 5px var(--shadow-light);
+  transition: all var(--transition-fast);
+}
+
+.btn-rule-test {
+  color: var(--accent-blue);
+}
+
+.btn-rule-delete {
+  color: var(--accent-red);
+}
+
+.btn-rule-test .hugeicon,
+.btn-rule-delete .hugeicon {
+  width: 13px;
+  height: 13px;
+}
+
+.btn-rule-test:active,
+.btn-rule-delete:active {
+  box-shadow: inset 2px 2px 4px var(--shadow-dark), inset -2px -2px 4px var(--shadow-light);
+}
+
+/* designed by alfathaannn.id */
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 16px 8px;
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.empty-hint {
+  display: block;
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--text-light);
+  margin-top: 4px;
+}
+
+/* designed by alfathaannn.id */
+/* Footer */
+.footer {
+  text-align: center;
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--text-light);
+  padding: 2px 0;
+}
+
+/* designed by alfathaannn.id */

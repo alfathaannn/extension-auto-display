@@ -1,0 +1,186 @@
+<!-- designed by alfathaannn.id -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <!-- designed by alfathaannn.id -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="alfathaannn.id">
+  <title>POS & Kiosk Display Manager</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <!-- designed by alfathaannn.id -->
+  <div class="app-container">
+    <!-- Header -->
+    <!-- designed by alfathaannn.id -->
+    <header class="header">
+      <div class="logo-badge">
+        <!-- Hugeicons: computer-desk / monitor -->
+        <svg class="hugeicon icon-monitor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="3" width="20" height="13" rx="2.5"></rect>
+          <path d="M8 21h8"></path>
+          <path d="M12 16v5"></path>
+        </svg>
+      </div>
+      <div class="header-text">
+        <h1>POS Display Manager</h1>
+        <p class="subtitle">Multi-Monitor Kiosk Automator</p>
+      </div>
+      <div class="display-counter-badge" id="displayCountBadge" title="Jumlah monitor terdeteksi">
+        <span class="pulse-dot"></span>
+        <span id="displayCountText">0 Layar</span>
+      </div>
+    </header>
+
+    <!-- Main Card: Add / Configure Rule -->
+    <!-- designed by alfathaannn.id -->
+    <main class="card neumorphic-card">
+      <h2 class="section-title">
+        <!-- Hugeicons: settings-02 -->
+        <svg class="hugeicon title-hugeicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"></path>
+        </svg>
+        <span>Konfigurasi Aturan</span>
+      </h2>
+
+      <!-- Input URL -->
+      <!-- designed by alfathaannn.id -->
+      <div class="form-group">
+        <label for="urlInput">Target URL / Domain Pattern</label>
+        <div class="input-wrapper">
+          <input 
+            type="text" 
+            id="urlInput" 
+            class="neumorphic-input" 
+            placeholder="e.g. localhost:3000 atau /customer-display"
+            autocomplete="off"
+          />
+        </div>
+        <span class="hint-text">Cocokkan URL atau path yang ingin diarahkan ke display target.</span>
+      </div>
+
+      <!-- Custom Dropdown Target Display -->
+      <!-- designed by alfathaannn.id -->
+      <div class="form-group dropdown-group">
+        <label>Pilih Layar Monitor Target</label>
+        <div class="custom-select-wrapper" id="customDisplaySelectWrapper">
+          <button type="button" class="custom-select-trigger neumorphic-input" id="customDisplayTrigger" aria-haspopup="listbox" aria-expanded="false">
+            <div class="trigger-label">
+              <!-- Hugeicons: computer-desk -->
+              <svg class="hugeicon trigger-monitor-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="13" rx="2.5"></rect>
+                <path d="M8 21h8"></path>
+                <path d="M12 16v5"></path>
+              </svg>
+              <span class="text-truncate" id="customDisplayText">Memuat daftar monitor...</span>
+            </div>
+            <div class="custom-select-arrow" id="customDisplayArrow">
+              <!-- Hugeicons: arrow-down-01 -->
+              <svg class="hugeicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m18 9-6 6-6-6"></path>
+              </svg>
+            </div>
+          </button>
+
+          <!-- Custom Dropdown Menu List -->
+          <!-- designed by alfathaannn.id -->
+          <div class="custom-select-options" id="customDisplayOptions" role="listbox">
+            <!-- Dynamically populated via popup.js -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Toggles & Options -->
+      <!-- designed by alfathaannn.id -->
+      <div class="options-grid">
+        <div class="option-item">
+          <label class="toggle-container">
+            <input type="checkbox" id="fullscreenToggle" checked />
+            <span class="neumorphic-toggle"></span>
+            <span class="toggle-label">Auto Fullscreen</span>
+          </label>
+        </div>
+
+        <div class="option-item">
+          <label class="toggle-container">
+            <input type="checkbox" id="separateWinToggle" checked />
+            <span class="neumorphic-toggle"></span>
+            <span class="toggle-label">Pisah Jendela Mandiri</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <!-- designed by alfathaannn.id -->
+      <div class="button-group">
+        <button id="saveBtn" class="btn btn-primary">
+          <!-- Hugeicons: floppy-disk / save -->
+          <svg class="hugeicon btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+            <polyline points="17 21 17 13 7 13 7 21"></polyline>
+            <polyline points="7 3 7 8 15 8"></polyline>
+          </svg>
+          <span>Simpan Aturan</span>
+        </button>
+
+        <button id="testBtn" class="btn btn-secondary" title="Pindahkan jendela saat ini ke display terpilih untuk tes">
+          <!-- Hugeicons: play-stroke-rounded -->
+          <svg class="hugeicon btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 4.75a1 1 0 0 1 1.518-.857l12.44 7.25a1 1 0 0 1 0 1.714l-12.44 7.25A1 1 0 0 1 6 19.25V4.75Z"></path>
+          </svg>
+          <span>Test Sekarang</span>
+        </button>
+      </div>
+
+      <!-- Status Toast Message -->
+      <div id="statusMessage" class="status-message hidden"></div>
+    </main>
+
+    <!-- Saved Rules Section -->
+    <!-- designed by alfathaannn.id -->
+    <section class="card neumorphic-card rules-section">
+      <div class="rules-header">
+        <h2 class="section-title">
+          <!-- Hugeicons: task-daily-01 / clipboard-list -->
+          <svg class="hugeicon title-hugeicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="5" y="4" width="14" height="17" rx="2.5"></rect>
+            <path d="M9 2h6a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1Z"></path>
+            <path d="M9 11h6"></path>
+            <path d="M9 15h4"></path>
+          </svg>
+          <span>Aturan Aktif (<span id="ruleCount">0</span>)</span>
+        </h2>
+        <button id="refreshDisplaysBtn" class="btn-icon-only" title="Refresh Daftar Monitor">
+          <!-- Hugeicons: reload / refresh -->
+          <svg class="hugeicon icon-refresh" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+            <path d="M3 3v5h5"></path>
+            <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"></path>
+            <path d="M21 21v-5h-5"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- designed by alfathaannn.id -->
+      <div id="rulesList" class="rules-list">
+        <!-- Rendered dynamically via popup.js -->
+        <div class="empty-state">
+          <p>Belum ada aturan tersimpan.</p>
+          <span class="empty-hint">Masukkan URL dan pilih monitor di atas lalu klik Simpan.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <!-- designed by alfathaannn.id -->
+    <footer class="footer">
+      <span>Siap untuk POS Kasir & Kiosk Display</span>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
+<!-- designed by alfathaannn.id -->
